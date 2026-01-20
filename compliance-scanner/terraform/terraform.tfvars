@@ -1,0 +1,36 @@
+# =============================================================================
+# CloudGuard - AWS Security Compliance Scanner
+# Example Terraform Variables
+# =============================================================================
+# Copy this file to terraform.tfvars and customize for your environment
+
+# AWS region for deployment
+aws_region = "us-east-1"
+
+# Environment name (dev, staging, prod)
+environment = "dev"
+
+# Schedule for automated scans (daily at 2 AM UTC)
+schedule_expression = "cron(0 2 * * ? *)"
+
+# Email address for security alerts (leave empty to skip email subscription)
+alert_email = "claidi88@gmail.com"
+
+# Enable SNS notifications for critical findings
+enable_sns_notifications = true
+
+# Number of days to retain findings in DynamoDB
+findings_retention_days = 90
+
+# Lambda memory and timeout configurations
+lambda_memory_orchestrator = 256
+lambda_memory_checks       = 512
+lambda_memory_report       = 512
+
+lambda_timeout_orchestrator = 300
+lambda_timeout_checks       = 600
+lambda_timeout_report       = 300
+
+# Enable/disable specific check types
+enable_vpc_checks        = true
+enable_cloudtrail_checks = true

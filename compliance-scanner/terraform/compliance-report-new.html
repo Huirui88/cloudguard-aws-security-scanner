@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Compliance Report - scan-2026-01-20-21-39-46</title>
+    <style>
+        :root {
+            --critical-color: #dc3545;
+            --high-color: #fd7e14;
+            --medium-color: #ffc107;
+            --low-color: #28a745;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --border-color: #dee2e6;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .meta {
+            display: flex;
+            gap: 30px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid;
+            transition: transform 0.2s;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .card.critical { border-left-color: var(--critical-color); }
+        .card.high { border-left-color: var(--high-color); }
+        .card.medium { border-left-color: var(--medium-color); }
+        .card.low { border-left-color: var(--low-color); }
+        
+        .card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+        
+        .card .count {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .card.critical .count { color: var(--critical-color); }
+        .card.high .count { color: var(--high-color); }
+        .card.medium .count { color: var(--medium-color); }
+        .card.low .count { color: var(--low-color); }
+        
+        .findings-section {
+            margin-bottom: 30px;
+        }
+        
+        .findings-section h2 {
+            font-size: 1.3rem;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .findings-section.critical h2 { background: #fce4e4; color: var(--critical-color); }
+        .findings-section.high h2 { background: #fff3e0; color: var(--high-color); }
+        .findings-section.medium h2 { background: #fff8e1; color: #856404; }
+        .findings-section.low h2 { background: #e8f5e9; color: #155724; }
+        
+        .finding {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+        
+        .finding h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+        
+        .finding-details {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .finding-details p {
+            margin: 0;
+            padding: 8px 12px;
+            background: var(--bg-color);
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .finding-details strong {
+            color: #495057;
+            margin-right: 8px;
+        }
+        
+        .cis-badge {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ Security Compliance Report</h1>
+            <div class="meta">
+                <span><strong>Scan ID:</strong> scan-2026-01-20-21-39-46</span>
+                <span><strong>Generated:</strong> 2026-01-20 21:39 UTC</span>
+                <span><strong>Total Findings:</strong> 54</span>
+            </div>
+        </header>
+        
+        <div class="summary-cards">
+            <div class="card critical">
+                <h3>Critical</h3>
+                <div class="count">18</div>
+            </div>
+            <div class="card high">
+                <h3>High</h3>
+                <div class="count">10</div>
+            </div>
+            <div class="card medium">
+                <h3>Medium</h3>
+                <div class="count">15</div>
+            </div>
+            <div class="card low">
+                <h3>Low</h3>
+                <div class="count">11</div>
+            </div>
+        </div>
+
+        <div class="findings-section critical">
+            <h2>🔴 CRITICAL Findings (18)</h2>
+
+            <div class="finding">
+                <h3>S3 Public Access Block Not Fully Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> rose-demo-s3-v5</p>
+                    <p><strong>Description:</strong> Bucket 'rose-demo-s3-v5' does not have all public access block settings enabled</p>
+                    <p><strong>Remediation:</strong> Enable all public access block settings: BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.779740+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Security Group Allows SSH from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> launch-wizard-2</p>
+                    <p><strong>Description:</strong> Security group 'launch-wizard-2' (sg-03409247b9c650d88) allows SSH (port 22) from 0.0.0.0/0 (IPv4)</p>
+                    <p><strong>Remediation:</strong> Restrict SSH access to specific IP ranges or use a bastion host/VPN</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.2</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:06.011721+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Public Access Block Not Fully Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myfirstwebsite5035</p>
+                    <p><strong>Description:</strong> Bucket 'myfirstwebsite5035' does not have all public access block settings enabled</p>
+                    <p><strong>Remediation:</strong> Enable all public access block settings: BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.686410+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Security Group Allows SSH from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> test-insecure-sg</p>
+                    <p><strong>Description:</strong> Security group 'test-insecure-sg' (sg-0dd030313be7b0d8d) allows SSH (port 22) from 0.0.0.0/0 (IPv4)</p>
+                    <p><strong>Remediation:</strong> Restrict SSH access to specific IP ranges or use a bastion host/VPN</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.2</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.705032+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>CloudTrail Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> account</p>
+                    <p><strong>Description:</strong> No CloudTrail trails are configured for this account</p>
+                    <p><strong>Remediation:</strong> Enable CloudTrail with a multi-region trail to log all API activity</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">3.1</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.400269+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Security Group Allows SSH from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> launch-wizard-3</p>
+                    <p><strong>Description:</strong> Security group 'launch-wizard-3' (sg-0981dcd545e8bfb65) allows SSH (port 22) from 0.0.0.0/0 (IPv4)</p>
+                    <p><strong>Remediation:</strong> Restrict SSH access to specific IP ranges or use a bastion host/VPN</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.2</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.704960+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Public Access Block Not Fully Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> rose-demo-s3-v5</p>
+                    <p><strong>Description:</strong> Bucket 'rose-demo-s3-v5' does not have all public access block settings enabled</p>
+                    <p><strong>Remediation:</strong> Enable all public access block settings: BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.472131+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Security Group Allows SSH from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> launch-wizard-4</p>
+                    <p><strong>Description:</strong> Security group 'launch-wizard-4' (sg-000560c0d12a2ecf7) allows SSH (port 22) from 0.0.0.0/0 (IPv4)</p>
+                    <p><strong>Remediation:</strong> Restrict SSH access to specific IP ranges or use a bastion host/VPN</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.2</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.705024+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Public Access Block Not Fully Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> test-insecure-bucket-12345</p>
+                    <p><strong>Description:</strong> Bucket 'test-insecure-bucket-12345' does not have all public access block settings enabled</p>
+                    <p><strong>Remediation:</strong> Enable all public access block settings: BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.676172+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Public Access Block Not Fully Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myencouragementbucket</p>
+                    <p><strong>Description:</strong> Bucket 'myencouragementbucket' does not have all public access block settings enabled</p>
+                    <p><strong>Remediation:</strong> Enable all public access block settings: BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.289042+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Public Access Block Not Fully Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myfirstwebsite5035</p>
+                    <p><strong>Description:</strong> Bucket 'myfirstwebsite5035' does not have all public access block settings enabled</p>
+                    <p><strong>Remediation:</strong> Enable all public access block settings: BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.382750+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Public Access Block Not Fully Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myencouragementbucket</p>
+                    <p><strong>Description:</strong> Bucket 'myencouragementbucket' does not have all public access block settings enabled</p>
+                    <p><strong>Remediation:</strong> Enable all public access block settings: BlockPublicAcls, IgnorePublicAcls, BlockPublicPolicy, RestrictPublicBuckets</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.588260+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Security Group Allows SSH from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> launch-wizard-1</p>
+                    <p><strong>Description:</strong> Security group 'launch-wizard-1' (sg-0fe7f505f1f2501c1) allows SSH (port 22) from 0.0.0.0/0 (IPv4)</p>
+                    <p><strong>Remediation:</strong> Restrict SSH access to specific IP ranges or use a bastion host/VPN</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.2</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.705003+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>CloudTrail Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> account</p>
+                    <p><strong>Description:</strong> No CloudTrail trails are configured for this account</p>
+                    <p><strong>Remediation:</strong> Enable CloudTrail with a multi-region trail to log all API activity</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">3.1</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.736787+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Security Group Allows SSH from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> launch-wizard-3</p>
+                    <p><strong>Description:</strong> Security group 'launch-wizard-3' (sg-0981dcd545e8bfb65) allows SSH (port 22) from 0.0.0.0/0 (IPv4)</p>
+                    <p><strong>Remediation:</strong> Restrict SSH access to specific IP ranges or use a bastion host/VPN</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.2</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:06.011667+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Security Group Allows SSH from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> launch-wizard-1</p>
+                    <p><strong>Description:</strong> Security group 'launch-wizard-1' (sg-0fe7f505f1f2501c1) allows SSH (port 22) from 0.0.0.0/0 (IPv4)</p>
+                    <p><strong>Remediation:</strong> Restrict SSH access to specific IP ranges or use a bastion host/VPN</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.2</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:06.011712+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Security Group Allows SSH from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> launch-wizard-4</p>
+                    <p><strong>Description:</strong> Security group 'launch-wizard-4' (sg-000560c0d12a2ecf7) allows SSH (port 22) from 0.0.0.0/0 (IPv4)</p>
+                    <p><strong>Remediation:</strong> Restrict SSH access to specific IP ranges or use a bastion host/VPN</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.2</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:06.011732+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Security Group Allows SSH from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> launch-wizard-2</p>
+                    <p><strong>Description:</strong> Security group 'launch-wizard-2' (sg-03409247b9c650d88) allows SSH (port 22) from 0.0.0.0/0 (IPv4)</p>
+                    <p><strong>Remediation:</strong> Restrict SSH access to specific IP ranges or use a bastion host/VPN</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.2</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.705013+00:00</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="findings-section high">
+            <h2>🟠 HIGH Findings (10)</h2>
+
+            <div class="finding">
+                <h3>No Password Policy Configured</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> password-policy</p>
+                    <p><strong>Description:</strong> No custom password policy is configured for this account</p>
+                    <p><strong>Remediation:</strong> Create a password policy that enforces complexity requirements</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">1.5-1.11</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:18.280583+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>IAM User Has Administrative Privileges</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> TerraformAdmin</p>
+                    <p><strong>Description:</strong> User 'TerraformAdmin' has administrative access to the AWS account</p>
+                    <p><strong>Remediation:</strong> Review if administrative access is required. Consider using more restrictive policies.</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">1.16</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:09.854993+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Policy Allows Wildcard Principal</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myencouragementbucket</p>
+                    <p><strong>Description:</strong> Bucket 'myencouragementbucket' has a policy with Principal: '*' without restrictive conditions</p>
+                    <p><strong>Remediation:</strong> Restrict bucket policy to specific principals or add conditions</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.624364+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Policy Allows Wildcard Principal</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myencouragementbucket</p>
+                    <p><strong>Description:</strong> Bucket 'myencouragementbucket' has a policy with Principal: '*' without restrictive conditions</p>
+                    <p><strong>Remediation:</strong> Restrict bucket policy to specific principals or add conditions</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.322870+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Network ACL Allows All Traffic from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> acl-030e96b50b02d79e5</p>
+                    <p><strong>Description:</strong> Network ACL 'acl-030e96b50b02d79e5' (acl-030e96b50b02d79e5) allows all inbound traffic from 0.0.0.0/0</p>
+                    <p><strong>Remediation:</strong> Restrict Network ACL rules to specific ports and protocols</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.1</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:06.126395+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Network ACL Allows All Traffic from Internet</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> acl-030e96b50b02d79e5</p>
+                    <p><strong>Description:</strong> Network ACL 'acl-030e96b50b02d79e5' (acl-030e96b50b02d79e5) allows all inbound traffic from 0.0.0.0/0</p>
+                    <p><strong>Remediation:</strong> Restrict Network ACL rules to specific ports and protocols</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.1</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.849977+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Policy Allows Wildcard Principal</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myfirstwebsite5035</p>
+                    <p><strong>Description:</strong> Bucket 'myfirstwebsite5035' has a policy with Principal: '*' without restrictive conditions</p>
+                    <p><strong>Remediation:</strong> Restrict bucket policy to specific principals or add conditions</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.414238+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>IAM User Has Administrative Privileges</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> TerraformAdmin</p>
+                    <p><strong>Description:</strong> User 'TerraformAdmin' has administrative access to the AWS account</p>
+                    <p><strong>Remediation:</strong> Review if administrative access is required. Consider using more restrictive policies.</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">1.16</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:20.668674+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Policy Allows Wildcard Principal</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myfirstwebsite5035</p>
+                    <p><strong>Description:</strong> Bucket 'myfirstwebsite5035' has a policy with Principal: '*' without restrictive conditions</p>
+                    <p><strong>Remediation:</strong> Restrict bucket policy to specific principals or add conditions</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.5</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.717576+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>No Password Policy Configured</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> password-policy</p>
+                    <p><strong>Description:</strong> No custom password policy is configured for this account</p>
+                    <p><strong>Remediation:</strong> Create a password policy that enforces complexity requirements</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">1.5-1.11</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:07.456950+00:00</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="findings-section medium">
+            <h2>🟡 MEDIUM Findings (15)</h2>
+
+            <div class="finding">
+                <h3>S3 Bucket Versioning Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> s3-access-logs-rose-v5</p>
+                    <p><strong>Description:</strong> Bucket 's3-access-logs-rose-v5' does not have versioning enabled</p>
+                    <p><strong>Remediation:</strong> Enable versioning to protect against accidental deletion</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.594239+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Unused IAM Access Key</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> Rose</p>
+                    <p><strong>Description:</strong> User 'Rose' has an access key not used in over 90 days</p>
+                    <p><strong>Remediation:</strong> Rotate or delete unused access keys</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:09.530752+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Versioning Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> test-insecure-bucket-12345</p>
+                    <p><strong>Description:</strong> Bucket 'test-insecure-bucket-12345' does not have versioning enabled</p>
+                    <p><strong>Remediation:</strong> Enable versioning to protect against accidental deletion</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.688373+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Default Security Group Has Rules</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> default-sg-vpc-0fed0ffa055d6ed0f</p>
+                    <p><strong>Description:</strong> Default security group (sg-0d5d13012a63a30d8) in VPC vpc-0fed0ffa055d6ed0f has ingress or egress rules configured</p>
+                    <p><strong>Remediation:</strong> Remove all inbound and outbound rules from default security groups</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.785112+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Versioning Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myfirstwebsite5035</p>
+                    <p><strong>Description:</strong> Bucket 'myfirstwebsite5035' does not have versioning enabled</p>
+                    <p><strong>Remediation:</strong> Enable versioning to protect against accidental deletion</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.395179+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Unused IAM User Password</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> Rose</p>
+                    <p><strong>Description:</strong> User 'Rose' has not used their password in over 90 days</p>
+                    <p><strong>Remediation:</strong> Disable or delete unused IAM user credentials</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:20.357856+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Versioning Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myencouragementbucket</p>
+                    <p><strong>Description:</strong> Bucket 'myencouragementbucket' does not have versioning enabled</p>
+                    <p><strong>Remediation:</strong> Enable versioning to protect against accidental deletion</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.602213+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>VPC Flow Logs Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> vpc-0fed0ffa055d6ed0f</p>
+                    <p><strong>Description:</strong> VPC 'vpc-0fed0ffa055d6ed0f' (vpc-0fed0ffa055d6ed0f) does not have flow logs enabled</p>
+                    <p><strong>Remediation:</strong> Enable VPC flow logs for network traffic monitoring and security analysis</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">3.9</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.917637+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Default Security Group Has Rules</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> default-sg-vpc-0fed0ffa055d6ed0f</p>
+                    <p><strong>Description:</strong> Default security group (sg-0d5d13012a63a30d8) in VPC vpc-0fed0ffa055d6ed0f has ingress or egress rules configured</p>
+                    <p><strong>Remediation:</strong> Remove all inbound and outbound rules from default security groups</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">5.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:06.050799+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Versioning Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myencouragementbucket</p>
+                    <p><strong>Description:</strong> Bucket 'myencouragementbucket' does not have versioning enabled</p>
+                    <p><strong>Remediation:</strong> Enable versioning to protect against accidental deletion</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.303024+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Versioning Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myfirstwebsite5035</p>
+                    <p><strong>Description:</strong> Bucket 'myfirstwebsite5035' does not have versioning enabled</p>
+                    <p><strong>Remediation:</strong> Enable versioning to protect against accidental deletion</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.699411+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Unused IAM User Password</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> Rose</p>
+                    <p><strong>Description:</strong> User 'Rose' has not used their password in over 90 days</p>
+                    <p><strong>Remediation:</strong> Disable or delete unused IAM user credentials</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:09.530733+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Versioning Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> s3-access-logs-rose-v5</p>
+                    <p><strong>Description:</strong> Bucket 's3-access-logs-rose-v5' does not have versioning enabled</p>
+                    <p><strong>Remediation:</strong> Enable versioning to protect against accidental deletion</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.899282+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>VPC Flow Logs Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> vpc-0fed0ffa055d6ed0f</p>
+                    <p><strong>Description:</strong> VPC 'vpc-0fed0ffa055d6ed0f' (vpc-0fed0ffa055d6ed0f) does not have flow logs enabled</p>
+                    <p><strong>Remediation:</strong> Enable VPC flow logs for network traffic monitoring and security analysis</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">3.9</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.644729+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>Unused IAM Access Key</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> Rose</p>
+                    <p><strong>Description:</strong> User 'Rose' has an access key not used in over 90 days</p>
+                    <p><strong>Remediation:</strong> Rotate or delete unused access keys</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">1.3</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:20.357877+00:00</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="findings-section low">
+            <h2>🟢 LOW Findings (11)</h2>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> s3-access-logs-rose-v5</p>
+                    <p><strong>Description:</strong> Bucket 's3-access-logs-rose-v5' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.908057+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myencouragementbucket</p>
+                    <p><strong>Description:</strong> Bucket 'myencouragementbucket' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.613556+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myencouragementbucket</p>
+                    <p><strong>Description:</strong> Bucket 'myencouragementbucket' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.311161+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myfirstwebsite5035</p>
+                    <p><strong>Description:</strong> Bucket 'myfirstwebsite5035' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.404396+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> test-insecure-bucket-12345</p>
+                    <p><strong>Description:</strong> Bucket 'test-insecure-bucket-12345' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.695814+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> compliance-scanner-reports-wo9mv6dx</p>
+                    <p><strong>Description:</strong> Bucket 'compliance-scanner-reports-wo9mv6dx' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.521496+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> s3-access-logs-rose-v5</p>
+                    <p><strong>Description:</strong> Bucket 's3-access-logs-rose-v5' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.603780+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> myfirstwebsite5035</p>
+                    <p><strong>Description:</strong> Bucket 'myfirstwebsite5035' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.708084+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> compliance-scanner-lambda-code-wo9mv6dx</p>
+                    <p><strong>Description:</strong> Bucket 'compliance-scanner-lambda-code-wo9mv6dx' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:22:05.418941+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> compliance-scanner-reports-wo9mv6dx</p>
+                    <p><strong>Description:</strong> Bucket 'compliance-scanner-reports-wo9mv6dx' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.201538+00:00</p>
+                </div>
+            </div>
+
+            <div class="finding">
+                <h3>S3 Bucket Access Logging Not Enabled</h3>
+                <div class="finding-details">
+                    <p><strong>Resource:</strong> compliance-scanner-lambda-code-wo9mv6dx</p>
+                    <p><strong>Description:</strong> Bucket 'compliance-scanner-lambda-code-wo9mv6dx' does not have access logging enabled</p>
+                    <p><strong>Remediation:</strong> Enable S3 access logging for audit trail</p>
+                    <p><strong>CIS Control:</strong> <span class="cis-badge">2.1.4</span></p>
+                    <p><strong>First Detected:</strong> 2026-01-20T21:29:16.101662+00:00</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Generated by CloudGuard - AWS Security Compliance Scanner</p>
+            <p>Powered by Anthropic Claude</p>
+        </footer>
+    </div>
+</body>
+</html>
