@@ -123,7 +123,7 @@ aws s3 ls s3://compliance-scanner-reports-<suffix>/reports/ --recursive
 ![Dashboard](compliance-scanner/docs/images/report-dashboard.png.png)
 
 ### Critical Findings
-![Critical Findings](compliance-scanner/docs/images/critical-findings.png)
+![Critical Findings](compliance-scanner/docs/images/critical-findingd.png.png)
 
 ### Email Alert
 ![Email Alert](compliance-scanner/docs/images/email-alert.png)
