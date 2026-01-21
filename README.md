@@ -120,13 +120,13 @@ aws s3 ls s3://compliance-scanner-reports-<suffix>/reports/ --recursive
 ## 📸 Screenshots
 
 ### Dashboard
-![Dashboard](docs/images/report-dashboard.png)
+![Dashboard](compliance-scanner/docs/images/report-dashboard.png.png)
 
 ### Critical Findings
-![Critical Findings](docs/images/critical-findings.png)
+![Critical Findings](compliance-scanner/docs/images/critical-findings.png)
 
 ### Email Alert
-![Email Alert](docs/images/email-alert.png)
+![Email Alert](compliance-scanner/docs/images/email-alert.png)
 
 ## 💰 Cost Estimate
 
