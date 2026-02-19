@@ -2,6 +2,7 @@
 ![Security Scans](https://github.com/Huirui88/cloudguard-aws-security-scanner/actions/workflows/security_scan.yml/badge.svg)
 ![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+
 An automated serverless security compliance scanner that monitors AWS infrastructure for misconfigurations and compliance violations against the CIS AWS Foundations Benchmark.
 
 ## 📊 Sample Report
