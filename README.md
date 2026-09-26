@@ -1,4 +1,7 @@
 # 🛡️ CloudGuard - AWS Security Compliance Scanner
+![Security Scans](https://github.com/Huirui88/cloudguard-aws-security-scanner/actions/workflows/security_scan.yml/badge.svg)
+![Python Version](https://img.shields.io/badge/python-3.12-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 An automated serverless security compliance scanner that monitors AWS infrastructure for misconfigurations and compliance violations against the CIS AWS Foundations Benchmark.
 
@@ -120,13 +123,13 @@ aws s3 ls s3://compliance-scanner-reports-<suffix>/reports/ --recursive
 ## 📸 Screenshots
 
 ### Dashboard
-![Dashboard](docs/images/report-dashboard.png)
+![Dashboard](compliance-scanner/docs/images/report-dashboard.png.png)
 
 ### Critical Findings
-![Critical Findings](docs/images/critical-findings.png)
+![Critical Findings](compliance-scanner/docs/images/critical-findingd.png.png)
 
 ### Email Alert
-![Email Alert](docs/images/email-alert.png)
+![Email Alert](compliance-scanner/docs/images/email-alert.png.png)
 
 ## 💰 Cost Estimate
 
